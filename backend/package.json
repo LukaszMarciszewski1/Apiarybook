@@ -1,8 +1,8 @@
 {
-  "name": "apiary-backend",
+  "name": "apiarybook-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "app.ts",
+  "main": "src/app.ts",
   "scripts": {
     "build": "npx tsc",
     "start": "nodemon src/app.ts",
@@ -11,6 +11,8 @@
   "author": "Łukasz Marciszewski",
   "license": "ISC",
   "dependencies": {
+    "@types/cors": "^2.8.12",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongodb": "^4.5.0",
@@ -25,4 +27,3 @@
     "typescript": "^4.7.3"
   }
 }
-

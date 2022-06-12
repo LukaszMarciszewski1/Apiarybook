@@ -13,6 +13,6 @@ router.get('/', getApiaries)
 router.post('/', createApiary)
 router.get('/:id', getApiary)
 router.patch('/:id', updateApiary)
-router.patch('/:id', deleteApiary)
+router.delete('/:id', deleteApiary)
 
 export default router

@@ -1,7 +1,7 @@
 export interface Apiary {
   _id: string
-  name: string
-  number: number
+  apiaryName: string
+  apiaryNumber: number
   createdAt: Date
   updatedAt: Date
 }

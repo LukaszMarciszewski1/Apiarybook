@@ -1,0 +1,28 @@
+.popup {
+  position: absolute;
+  right: 30px;
+  top: 5px;
+  padding: 16px;
+  background-color: #fcfcfc;
+  border: 1px solid #cdced1;
+  border-radius: 8px;
+  z-index: 100;
+}
+
+.header {
+  min-width: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(175, 175, 175);
+  padding-bottom: 16px;
+  h3 {
+    font-size: 18px;
+    color: gray;
+    margin: 0;
+  }
+}
+
+.popupContent {
+  margin-top: 16px;
+}

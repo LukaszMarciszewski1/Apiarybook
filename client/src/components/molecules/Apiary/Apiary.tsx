@@ -5,13 +5,10 @@ import {
   useCreateApiaryMutation,
   useUpdateApiaryMutation,
   useDeleteApiaryMutation,
- } from "../store/api/apiaries";
+ } from "../../../store/api/apiaries";
 
 const Apiary = () => {
   const {data, error, isLoading} = useGetAllApiariesQuery()
-  if(data){
-    console.log(data[0].createdAt)
-  }
   return (
     <div>
        

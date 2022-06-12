@@ -18,16 +18,42 @@
   background-color: #e6e6ee;
   background-size: cover;
   background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 4px;
   border-radius: 3px;
   max-height: 100%;
   border: 1px solid rgb(177, 177, 177);
   align-self: center;
+  opacity: .9;
   cursor: pointer;
   &:hover {
-    background-color: #dadae2;
+    opacity: 1;
+  }
+}
+
+.taskButton {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.6rem;
+  background-color: #ebecf0;
+  border-radius: 5px;
+  transition: 0.1s;
+  text-align: left;
+  user-select: none;
+  margin: 4px 0;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  opacity: .9;
+  .icon {
+    margin-right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:hover {
+    // background-color: #d8d8e0
+    opacity: 1;
   }
 }

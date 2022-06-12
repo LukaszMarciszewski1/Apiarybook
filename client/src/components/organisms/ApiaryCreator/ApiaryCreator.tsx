@@ -16,29 +16,30 @@ type FormValues = {
   apiaryNumber: number
 };
 
-const ApiaryCreator = () => {
+interface ApiaryCreatorProps {
+  apiaryName?: string
+  apiaryNumber?: number
+  handleCreateApiary: (e: any) => void
+}
+
+const ApiaryCreator:React.FC<ApiaryCreatorProps> = ({apiaryName, apiaryNumber, handleCreateApiary}) => {
   const [isNumberDisabled, setIsNumberDisabled] = useState(true)
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const [num, setNum] = useState('')
-  const [createApiary] = useCreateApiaryMutation()
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormValues>({
     defaultValues: {
-      apiaryName: "",
-      apiaryNumber: 1000
+      apiaryName: apiaryName,
+      apiaryNumber: apiaryNumber
     }
   })
 
-  const handleCreateApiary = (data: FormValues) => {
-    const limit = 5
+  const onSubmit = (data: FormValues) => {
     if(Number(data.apiaryNumber) > 5) {
       console.log('jest')
     }
-    createApiary({
-      apiaryName: data.apiaryName,
-      apiaryNumber: Number(data.apiaryNumber)
-    })
+    if(data){
+      handleCreateApiary(data)
+    }
     reset()
-    console.log(data.apiaryNumber)
   }
 
   const handleEditApiaryNumber = () => {
@@ -46,16 +47,11 @@ const ApiaryCreator = () => {
   }
 
   const handleNumChange = (e: { target: { value: string; }; }) => {
-    if(e.target.value.length > 5){
-      // const limit = 4;
-      // e.target.value.slice(0, limit)
-      console.log('eee')
-    }
+    console.log(e.target.value.length)
   };
 
   return (
-    <Modal title={'Dodawanie pasieki do rejestru'} closeModal={() => console.log('close')} trigger={isModalOpen}>
-      <Form handleSubmit={handleSubmit(handleCreateApiary)}>
+      <Form handleSubmit={handleSubmit(onSubmit)}>
         <FormGroup
           label={'Nazwa pasieki'}
           htmlFor={'apiaryName'}
@@ -72,24 +68,21 @@ const ApiaryCreator = () => {
         </FormGroup>
         <FormGroup
           label={'Numer pasieki'}
-          htmlFor={'apiaryNumber'}
+          htmlFor={'number'}
           error={errors?.apiaryNumber}
           errorMessage="Numer pasieki jest nieprawidłowy"
         >
           <Input
-            id={'apiaryNumber'}
+            id={'number'}
             placeholder={'Numer Pasieki'}
             label={'Numer Pasieki'}
             type="number"
             {...register("apiaryNumber", { required: true , pattern: /[0-9]{5}/, maxLength: 5})}
             disabled={isNumberDisabled}
-            // value={888}
-            onChange={handleNumChange}
           />
-          <IconButton title={'Edytuj numer pasieki'} onClick={handleEditApiaryNumber}><FiEdit /></IconButton>
+          <IconButton onClick={handleEditApiaryNumber}><FiEdit /></IconButton>
         </FormGroup>
       </Form>
-    </Modal>
   )
 }
 

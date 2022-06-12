@@ -20,6 +20,7 @@ interface ApiaryCreatorProps {
   apiaryName?: string
   apiaryNumber?: number
   handleCreateApiary: (e: any) => void
+  handleEditApiaryNumber?: () => void
 }
 
 const ApiaryCreator:React.FC<ApiaryCreatorProps> = ({apiaryName, apiaryNumber, handleCreateApiary}) => {
@@ -77,7 +78,7 @@ const ApiaryCreator:React.FC<ApiaryCreatorProps> = ({apiaryName, apiaryNumber, h
             placeholder={'Numer Pasieki'}
             label={'Numer Pasieki'}
             type="number"
-            {...register("apiaryNumber", { required: true , pattern: /[0-9]{5}/, maxLength: 5})}
+            {...register("apiaryNumber", { required: true , pattern: /[0-9]{16}/, maxLength: 16})}
             disabled={isNumberDisabled}
           />
           <IconButton onClick={handleEditApiaryNumber}><FiEdit /></IconButton>

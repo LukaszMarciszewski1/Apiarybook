@@ -34,7 +34,6 @@ const ApiariesList = () => {
   const handleRemoveApiary = () => {
 
   }
-  console.log(currentApiary.createdAt)
 
   return (
     <div className={styles.container}>

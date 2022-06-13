@@ -11,8 +11,12 @@ app.use(cors())
 app.use('/api/apiaries', apiaryRoutes)
 
 connectDB()
-.then(() => app.listen(config.server.port, () => {
+app.listen(config.server.port, () => {
     console.log(`Server is running on port ${config.server.port}`)
-  })
-)
-.catch(error => console.log(`${error} did not connect`))
+})
+
+// .then(() => app.listen(config.server.port, () => {
+//   console.log(`Server is running on port ${config.server.port}`)
+// })
+// )
+// .catch(error => console.log(`${error} did not connect`))

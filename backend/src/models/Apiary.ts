@@ -3,6 +3,8 @@ import mongoose, { Schema } from 'mongoose'
 interface IApiary {
   apiaryName: string
   apiaryNumber: number
+  specialNumber: number
+  createdAt: Date
 }
 
 const apiarySchema = new Schema<IApiary>(
@@ -14,6 +16,10 @@ const apiarySchema = new Schema<IApiary>(
     apiaryNumber: {
       type: Number,
       required: true,
+    },
+    specialNumber: {
+      type: Number,
+      default: 1
     },
   },
   {

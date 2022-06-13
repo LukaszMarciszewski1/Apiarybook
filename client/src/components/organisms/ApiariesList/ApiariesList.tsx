@@ -42,10 +42,11 @@ const ApiariesList = () => {
         <table>
           <thead className={styles.tableHead}>
             <tr>
-              <th>name</th>
-              <th>apiaryNumber</th>
-              <th>updatedAt</th>
-              <th>createdAt</th>
+              <th>Nazwa pasieki</th>
+              <th>Numer pasieki</th>
+              <th>Data dodania</th>
+              <th>Data edycji</th>
+              <th>numer specjalny</th>
               <th>edycja</th>
             </tr>
           </thead>
@@ -57,6 +58,7 @@ const ApiariesList = () => {
                   _id={apiary._id}
                   apiaryName={apiary.apiaryName}
                   apiaryNumber={apiary.apiaryNumber}
+                  specialNumber={apiary.specialNumber}
                   updatedAt={apiary.updatedAt}
                   createdAt={apiary.createdAt}
                   handleEdit={() => console.log('edit')}

@@ -6,10 +6,7 @@ import FormGroup from '../../atoms/Form/FormGroup';
 import Input from '../../atoms/Input/Input'
 import IconButton from '../../atoms/Buttons/IconButton';
 import { FiEdit } from "react-icons/fi";
-
-import {
-  useCreateApiaryMutation
-} from "../../../store/api/apiaries";
+import {Apiary as ApiaryModel} from '../../../models/apiary'
 
 type FormValues = {
   apiaryName: string
@@ -19,13 +16,13 @@ type FormValues = {
 interface ApiaryCreatorProps {
   apiaryName?: string
   apiaryNumber?: number
+  specialNumber?: number
   handleCreateApiary: (e: any) => void
   handleEditApiaryNumber?: () => void
 }
 
 const ApiaryCreator:React.FC<ApiaryCreatorProps> = ({apiaryName, apiaryNumber, handleCreateApiary}) => {
   const [isNumberDisabled, setIsNumberDisabled] = useState(true)
-  const [num, setNum] = useState('')
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormValues>({
     defaultValues: {
       apiaryName: apiaryName,

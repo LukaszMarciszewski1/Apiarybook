@@ -1,26 +1,31 @@
 import dayjs from 'dayjs'
-import isToday from 'dayjs/plugin/isToday'
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import { Apiary } from '../models/apiary'
 dayjs.locale('pl')
+dayjs.extend(isSameOrBefore)
 
-dayjs.extend(isToday)
 export const specialNumber = (data: Apiary[] | undefined) => {
-  if (data) {
-    const itemsSpecialNumber = data?.map((item) => item.specialNumber)
-    const largestNumberOfItems = itemsSpecialNumber.length
-      ? itemsSpecialNumber?.reduce((a, b) => Math.max(a, b + 1))
-      : 1
-    const isToday = dayjs().isToday()
-    let initialSpNumber = '00000' + (isToday ? largestNumberOfItems : 1)
-    while (initialSpNumber.charAt(0) === '0' && initialSpNumber.length > 5) {
-      initialSpNumber = initialSpNumber.substring(1)
-    }
-    return initialSpNumber
+  if (!data) return
+  let isSameDay
+  let specialNumber
+  let latestItem
+
+  if (data.length) {
+    latestItem = data.reduce((a, b) => (a.createdAt > b.createdAt ? a : b))
+    isSameDay = dayjs(Date.now()).isSameOrBefore(latestItem.createdAt, 'minutes')
+    specialNumber = data.length ? latestItem.specialNumber + 1 : 1
   }
+
+  let itemSpecialNumber = '00000' + (isSameDay ? specialNumber : 1)
+  while (itemSpecialNumber.charAt(0) === '0' && itemSpecialNumber.length > 5) {
+    itemSpecialNumber = itemSpecialNumber.substring(1)
+  }
+  
+  return itemSpecialNumber
 }
 
 export const apiaryNumber = (data: Apiary[] | undefined) => {
-  if (data) {
+  if (!data) return
     const dataObj = {
       date: dayjs(Date.now()).format('YYYYMMDD'),
       specialNumber: specialNumber(data),
@@ -40,5 +45,4 @@ export const apiaryNumber = (data: Apiary[] | undefined) => {
       numberArray[6] +
       numberArray[numberArray.length - 1]
     return result
-  }
 }

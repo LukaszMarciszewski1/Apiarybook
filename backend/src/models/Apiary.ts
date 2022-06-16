@@ -4,6 +4,7 @@ interface IApiary {
   apiaryName: string
   apiaryNumber: number
   specialNumber: number
+  editSpecialNumber: boolean
   createdAt: Date
 }
 
@@ -17,10 +18,11 @@ const apiarySchema = new Schema<IApiary>(
       type: Number,
       required: true,
     },
-    specialNumber: {
-      type: Number,
-      default: 1
-    },
+    specialNumber: Number,
+    editSpecialNumber: {
+      type: Boolean,
+      default: false
+    }
   },
   {
     timestamps: true,

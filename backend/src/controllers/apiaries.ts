@@ -22,12 +22,13 @@ export const getApiary = async (req: Request, res: Response) => {
 }
 
 export const createApiary = async (req: Request, res: Response) => {
-  const { apiaryName, apiaryNumber, specialNumber } = req.body
+  const { apiaryName, apiaryNumber, specialNumber, editSpecialNumber } = req.body
   try {
     const apiary = await new Apiary({
       apiaryName,
       apiaryNumber, 
       specialNumber,
+      editSpecialNumber
   }).save()
     res.status(201).json(apiary)
   } catch (error) {

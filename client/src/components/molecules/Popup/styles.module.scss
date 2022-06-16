@@ -1,18 +1,7 @@
-.overlay{
+.popup {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #2929294c;
-  z-index: 99;
-}
-
-.modal {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  right: 30px;
+  top: 30px;
   padding: 16px;
   background-color: #fcfcfc;
   border: 1px solid #cdced1;
@@ -34,6 +23,6 @@
   }
 }
 
-.modalContent {
+.popupContent {
   margin-top: 16px;
 }

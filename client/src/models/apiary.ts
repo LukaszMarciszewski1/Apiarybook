@@ -4,5 +4,6 @@ export interface Apiary {
   apiaryNumber: number
   specialNumber: number
   createdAt: string
-  updatedAt: string
+  updatedAt?: string
+  editSpecialNumber?: boolean
 }

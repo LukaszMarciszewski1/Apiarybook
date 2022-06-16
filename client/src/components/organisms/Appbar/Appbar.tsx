@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 
 const Appbar = () => {
   return (
-    <div className={styles.appbar}>Appbar</div>
+    <div className={styles.appbar}></div>
   )
 }
 

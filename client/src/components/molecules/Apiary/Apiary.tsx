@@ -7,13 +7,12 @@ interface ApiaryProps extends ApiaryModel {
   editAction?: JSX.Element
 }
 
-const Apiary: React.FC<ApiaryProps> = ({ apiaryName, apiaryNumber, createdAt, updatedAt, editAction, specialNumber }) => {
+const Apiary: React.FC<ApiaryProps> = ({ apiaryName, apiaryNumber, createdAt, editAction, specialNumber }) => {
   return (
       <tr className={styles.tbody}>
         <td>{apiaryName}</td>
         <td>{apiaryNumber}</td>
         <td>{dayjs(createdAt).format('YYYY-MM-DD HH:mm:ss')}</td>
-        <td>{dayjs(updatedAt).format('YYYY-MM-DD HH:mm:ss')}</td>
         <td>{specialNumber}</td>
         <td style={{ width: '100px', textAlign: 'center', verticalAlign: 'middle' }}>
           <span style={{ width: '50px' }}>

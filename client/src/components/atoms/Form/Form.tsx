@@ -11,7 +11,6 @@ const Form: React.FC<FormProps> = ({ children, handleSubmit }) => {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       {children}
-      <SubmitButton title={'Dodaj'} type="submit" />
     </form>
   )
 }

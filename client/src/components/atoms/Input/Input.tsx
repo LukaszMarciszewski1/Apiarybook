@@ -9,6 +9,7 @@ export type InputProps = {
   placeholder: string
   disabled?: boolean
   onChange?: (value: any) => void
+  value?: number
 }
 
 const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
@@ -21,6 +22,7 @@ const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
       placeholder,
       disabled,
       onChange,
+      value,
       ...props
     },
     ref
@@ -31,6 +33,7 @@ const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         name={name}
         type={type}
+        value={value}
         aria-label={label}
         placeholder={placeholder}
         onChange={onChange}
@@ -43,53 +46,3 @@ const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
 )
 
 export default Input
-
-
-
-
-
-
-
-
-
-
-
-// import React, { forwardRef } from 'react'
-// import styles from './styles.module.scss'
-
-// export type InputProps = {
-//   id: string;
-//   name: string;
-//   label: string;
-//   type?: 'text' | 'email' | 'number';
-//   placeholder: string
-// }
-
-// const Input: React.FC<InputProps> = forwardRef<HTMLInputElement, InputProps>(
-//   (
-//     {
-//       id,
-//       name,
-//       label,
-//       type,
-//       placeholder,
-//       ...props
-//     },
-//     ref
-//   ) => {
-//     return (
-//       <input
-//         id={id}
-//         ref={ref}
-//         name={name}
-//         type={type}
-//         aria-label={label}
-//         placeholder={placeholder}
-//         className={styles.input}
-//         {...props}
-//       />
-//     )
-//   }
-// )
-
-// export default Input

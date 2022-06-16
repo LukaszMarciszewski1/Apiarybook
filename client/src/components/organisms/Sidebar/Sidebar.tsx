@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import styles from './styles.module.scss'
-
 import { MdArrowForwardIos } from "react-icons/md";
 import { GrTask } from "react-icons/gr";
 
 const menuItems = [
   {
-    name: 'Pasielki',
+    name: 'Pasieki',
     path: '/',
     icon: <GrTask />
   },

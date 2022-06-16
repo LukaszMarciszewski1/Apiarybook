@@ -2,34 +2,32 @@ import React from 'react'
 import styles from './styles.module.scss'
 
 type ButtonPropsStyle = {
-  height?: string
   margin?: string
-  width?: string
   bgColor?: string
   color?: string
 }
-
-interface TaskButtonProps extends ButtonPropsStyle {
-  icon?: JSX.Element
-  name?: string
-  onClick: () => void
+interface IconButtonProps extends ButtonPropsStyle {
+  onClick?: () => void;
+  children?: JSX.Element
+  title?: string
+  disabled?: boolean
 }
 
-const TaskButton: React.FC<TaskButtonProps> = ({ onClick, name, icon, height, margin, width, bgColor, color }) => {
-  return (
-    <button style={{
-      height: height,
+const Button: React.FC<IconButtonProps> = ({children, onClick, title, margin, bgColor, color,  disabled}) => (
+  <button
+    className={styles.iconButton}
+    onClick={onClick}
+    type='button'
+    disabled={disabled}
+    style={{
       margin: margin,
-      width: width,
+      color: color,
       backgroundColor: bgColor,
-      color: color
     }}
-      className={styles.taskButton}
-      onClick={onClick}>
-      <div className={styles.icon}>{icon}</div>
-      {name}
-    </button>
-  )
-}
+  >
+    {children}
+    {title}
+  </button>
+)
 
-export default TaskButton
+export default Button

@@ -4,32 +4,30 @@ import { BsXLg } from "react-icons/bs";
 import IconButton from '../../atoms/Buttons/Button';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
 
-type ModalProps = {
+type PopupProps = {
   trigger: boolean
   title: string
-  closeModal: () => void
+  closePopup: () => void
   children: JSX.Element | JSX.Element[];
 }
 
-const Modal: React.FC<ModalProps> = ({ children, trigger, title, closeModal }) => {
-  const refModal = useRef(null)
-  useOnClickOutside(refModal, closeModal)
+const Popup: React.FC<PopupProps> = ({ children, trigger, title, closePopup }) => {
+  const refPopup = useRef(null)
+  useOnClickOutside(refPopup, closePopup)
 
   return (
     trigger ? (
-      <div className={styles.overlay}>
-        <div className={styles.modal} ref={refModal}>
+        <div className={styles.popup} ref={refPopup}>
           <div className={styles.header}>
             <h3>{title}</h3>
-            <IconButton onClick={closeModal}><BsXLg /></IconButton>
+            <IconButton onClick={closePopup}><BsXLg /></IconButton>
           </div>
-          <div className={styles.modalContent}>
+          <div className={styles.popupContent}>
             {children}
           </div>
         </div>
-      </div>
     ) : null
   )
 }
 
-export default Modal
+export default Popup

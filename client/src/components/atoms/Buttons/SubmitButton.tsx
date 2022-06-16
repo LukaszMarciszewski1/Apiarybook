@@ -6,11 +6,12 @@ interface ButtonProps {
   title: string
   bgColor?: string
   type: "submit" 
+
 }
 
-const Button: React.FC<ButtonProps> = ({ onClick, bgColor, title, type }) => (
+const SubmitButton: React.FC<ButtonProps> = ({ onClick, bgColor, title, type }) => (
   <button
-    className={styles.button}
+    className={styles.submitButton}
     onClick={onClick}
     type={type}
     style={{ backgroundColor: `${bgColor}` }}>
@@ -18,4 +19,4 @@ const Button: React.FC<ButtonProps> = ({ onClick, bgColor, title, type }) => (
   </button>
 )
 
-export default Button
+export default SubmitButton

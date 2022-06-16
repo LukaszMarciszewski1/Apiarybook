@@ -16,7 +16,7 @@ export const getSpecialNumber = (data: Apiary[] | undefined) => {
   const dataWithoutEditSpecialNumber = data?.filter(
     (item) => item.editSpecialNumber === false
   )
-
+  let newSpecialNumber
   if (data.length > 0) {
     const latestItemOfData = dataWithoutEditSpecialNumber.reduce((a, b) =>
       a.createdAt > b.createdAt ? a : b
@@ -32,19 +32,19 @@ export const getSpecialNumber = (data: Apiary[] | undefined) => {
     if (specialNumber === biggestItemOfData) {
       specialNumber = biggestItemOfData + 1
     }
+    //wykorzystany algorytm ze Stack Overflow -----------------------------------------------------------------------------------------------------------------------------------------//
+    let missingNumbers = (a: number[], l = true) =>
+      Array.from(Array(Math.max(...a)).keys())
+        .map((n, i) =>
+          a.indexOf(i) < 0 && (!l || i > Math.min(...a)) ? i : null
+        )
+        .filter((f) => f)
+    //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    const missingArray = data.map((item) => item.specialNumber)
+    newSpecialNumber = missingNumbers(missingArray).length
+      ? missingNumbers(missingArray)[0]
+      : specialNumber
   }
-  //wykorzystany algorytm ze Stack Overflow -----------------------------------------------------------------------------------------------------------------------------------------//
-  let missingNumbers = (a: number[], l = true) =>
-    Array.from(Array(Math.max(...a)).keys())
-      .map((n, i) =>
-        a.indexOf(i) < 0 && (!l || i > Math.min(...a)) ? i : null
-      )
-      .filter((f) => f)
-  //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-  const missingArray = data.map((item) => item.specialNumber)
-  const newSpecialNumber = missingNumbers(missingArray).length
-    ? missingNumbers(missingArray)[0]
-    : specialNumber
   specialNumberToStr = '00000' + (isSameDay ? newSpecialNumber : 1)
   while (
     specialNumberToStr.charAt(0) === '0' &&

@@ -15,7 +15,6 @@ import { Apiary as ApiaryModel } from '../../../models/apiary'
 
 const ApiariesList = () => {
   const { data, error, isLoading } = useGetAllApiariesQuery()
-  const [updateApiary] = useUpdateApiaryMutation()
   const [deleteApiary] = useDeleteApiaryMutation()
   const [isSortedOpen, setIsSortedOpen] = useState(false)
   const [lists, setLists] = useState<ApiaryModel[]>([] as ApiaryModel[])

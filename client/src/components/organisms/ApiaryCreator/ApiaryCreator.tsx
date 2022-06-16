@@ -37,7 +37,6 @@ const Header = () => {
     setApiaryNumber(newApiaryNumber)
   }, [newApiaryNumber])
 
-
   const handleSaveSpecialNumber = () => {
     if (isNumberExist) {
       alert('Wybrany numer pasieki już istnieje')
@@ -60,7 +59,6 @@ const Header = () => {
       setSpecialNumber(newSpecialNumber)
     }
   }
-
 
   const changeSpecialNumber = (e: { target: { value: React.SetStateAction<number | undefined> } }) => {
     const addLeadingZeros = (num: number, totalLength: number): string => {

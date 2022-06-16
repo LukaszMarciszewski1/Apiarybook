@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import styles from './styles.module.scss'
-import { FiEdit } from 'react-icons/fi'
 import TaskButton from '../../atoms/Buttons/TaskButton'
 import ApiaryForm from '../ApiaryForm/ApiaryForm'
 import Modal from '../../molecules/Modal/Modal'
-import Popup from '../../molecules/Popup/Popup'
 import {
   useGetAllApiariesQuery,
   useCreateApiaryMutation
 } from "../../../store/api/apiaries";
 
+import { FiEdit } from 'react-icons/fi'
 import { Apiary as ApiaryModel } from '../../../models/apiary'
 import { getApiaryNumber, getSpecialNumber } from '../../../calculation/generateNumbers'
 
@@ -36,7 +35,6 @@ const Header = () => {
 
   useEffect(() => {
     setApiaryNumber(newApiaryNumber)
-
   }, [newApiaryNumber])
 
 

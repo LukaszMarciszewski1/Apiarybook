@@ -1,29 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import styles from './styles.module.scss'
-import Apiary from '../../molecules/Apiary/Apiary'
-
-
-import Button from '../../atoms/Buttons/Button'
-import { Apiary as ApiaryModel } from '../../../models/apiary'
 import {
   useGetAllApiariesQuery,
   useUpdateApiaryMutation,
   useDeleteApiaryMutation,
 } from "../../../store/api/apiaries";
-import Modal from '../../molecules/Modal/Modal'
-import { RiDeleteBin6Line } from 'react-icons/ri'
-import TaskButton from '../../atoms/Buttons/TaskButton'
-import ApiaryCreator from '../ApiaryForm/ApiaryForm'
-
 import Popup from '../../molecules/Popup/Popup'
+import Apiary from '../../molecules/Apiary/Apiary'
+import Button from '../../atoms/Buttons/Button'
+import TaskButton from '../../atoms/Buttons/TaskButton'
 import { FiFilter } from 'react-icons/fi'
+import { RiDeleteBin6Line } from 'react-icons/ri'
+import { Apiary as ApiaryModel } from '../../../models/apiary'
 
 const ApiariesList = () => {
   const { data, error, isLoading } = useGetAllApiariesQuery()
   const [updateApiary] = useUpdateApiaryMutation()
   const [deleteApiary] = useDeleteApiaryMutation()
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [currentApiary, setCurrentApiary] = useState<ApiaryModel>({} as ApiaryModel)
   const [isSortedOpen, setIsSortedOpen] = useState(false)
   const [lists, setLists] = useState<ApiaryModel[]>([] as ApiaryModel[])
 
@@ -32,15 +25,6 @@ const ApiariesList = () => {
       setLists(data)
     }
   }, [data])
-
-  const handleUpdateApiary = (data: ApiaryModel) => {
-    updateApiary({
-      _id: currentApiary._id,
-      apiaryName: data.apiaryName,
-      apiaryNumber: data.apiaryNumber
-    })
-    setIsModalOpen(false)
-  }
 
   const handleSortByDate = (props: string) => {
     if (!data) return
@@ -94,13 +78,8 @@ const ApiariesList = () => {
                     handleEdit={() => console.log('edit')}
                     editAction={
                       <>
-                        {/* <Button bgColor='green' color='white' margin='0 10px 0 0' onClick={() => {
-                        setIsModalOpen(true)
-                        setCurrentApiary(apiary)
-                      }} ><FiEdit />
-                      </Button> */}
                         <Button bgColor='grey' color='white' onClick={() => {
-                          // alert('Pasieka została usunięta?')
+                          alert('Pasieka została usunięta?')
                           deleteApiary(apiary._id)
                         }} ><RiDeleteBin6Line /></Button>
                       </>
@@ -111,13 +90,6 @@ const ApiariesList = () => {
             </tbody>
           </table>
         )}
-        <Modal title={'Edytowanie pasieki'} closeModal={() => setIsModalOpen(false)} trigger={isModalOpen}>
-          {/* <ApiaryCreator 
-          apiaryName={currentApiary.apiaryName} 
-          apiaryNumber={currentApiary.apiaryNumber} 
-          handleCreateApiary={handleUpdateApiary} 
-        /> */}
-        </Modal>
       </div>
     </>
   )

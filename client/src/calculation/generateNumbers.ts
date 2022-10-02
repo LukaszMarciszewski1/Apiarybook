@@ -32,7 +32,7 @@ export const getSpecialNumber = (data: Apiary[] | undefined) => {
     if (specialNumber === biggestItemOfData) {
       specialNumber = biggestItemOfData + 1
     }
-    //wykorzystany algorytm ze Stack Overflow -----------------------------------------------------------------------------------------------------------------------------------------//
+    //used algorithm from Stack Overflow -----------------------------------------------------------------------------------------------------------------------------------------//
     let missingNumbers = (a: number[], l = true) =>
       Array.from(Array(Math.max(...a)).keys())
         .map((n, i) =>

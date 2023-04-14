@@ -1,10 +1,11 @@
-# apiarybook
+# Apiarybook
 
-## Run Locally
-
-### 1. Clone repo
-
-### 2. Install Backend:  cd backend && npm i && npm start
-
-### 3. Install Frontend: cd client && npm i && npm start
+## Built With
+TypeScript,
+React / Redux Toolkit,
+MongoDB / Mongoose,
+NodeJS, Express,
+AWS S3,
+JWT token,
+Module SCSS
 
